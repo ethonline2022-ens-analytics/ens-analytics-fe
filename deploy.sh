@@ -19,6 +19,9 @@ echo > .nojekyll
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
+git config user.email "automation@github.com"
+git config user.name "GitHub Action"
+
 git init
 git checkout -b main
 git add -A
