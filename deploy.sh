@@ -5,7 +5,7 @@ set -e
 
 
 # install
-npm run install
+npm ci
 
 # build
 npm run build
