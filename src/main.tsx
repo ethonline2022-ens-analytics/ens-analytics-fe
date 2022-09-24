@@ -5,9 +5,12 @@ import { store } from './redux'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import routes from '~react-pages'
+import { useLocalStorageWallet } from './hooks/useLocalStorageWallet'
 
 const App = () => {
   const navigation = useNavigate()
+  useLocalStorageWallet()
+  
   useEffect(()=>{
     const path = localStorage.getItem('path')
     if (path) {
