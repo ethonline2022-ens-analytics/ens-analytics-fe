@@ -1,9 +1,7 @@
 import { init } from '@web3-onboard/react'
 import injectedModule from '@web3-onboard/injected-wallets'
 import walletConnectModule from '@web3-onboard/walletconnect'
-
-const ETH_MAINNET_RPC = 'https://mainnet.infura.io/v3/099fc58e0de9451d80b18d7c74caa7c1' 
-const ETH_RINKEBY_RPC = 'https://rinkeby.infura.io/v3/099fc58e0de9451d80b18d7c74caa7c1'
+import { CONFIG } from '../config'
 
 const injected = injectedModule()
 export const onboard = init({
@@ -15,13 +13,13 @@ export const onboard = init({
       id    : '0x1',
       token : 'ETH',
       label : 'Ethereum Mainnet',
-      rpcUrl: ETH_MAINNET_RPC
+      rpcUrl: CONFIG.RPC_ADDRESS.ETH_MAINNET_RPC
     },
     {
       id    : '0x4',
       token : 'rETH',
       label : 'Ethereum Rinkeby Testnet',
-      rpcUrl: ETH_RINKEBY_RPC
+      rpcUrl: CONFIG.RPC_ADDRESS.ETH_RINKEBY_RPC
     }
   ],
   appMetadata: {
