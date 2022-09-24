@@ -19,7 +19,9 @@ const App = () => {
     }
   }, [])
 
-  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>
+  return <Suspense fallback={<p>Loading...</p>}>
+    <div className='h-screen w-screen'>{useRoutes(routes)}</div>
+  </Suspense>
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

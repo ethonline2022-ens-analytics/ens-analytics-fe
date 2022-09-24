@@ -32,7 +32,8 @@ module.exports = {
         'quotes': ['error', 'single'],
         'jsx-quotes': ['error', 'prefer-single'],
         'semi': ['error', 'never'],
-        'no-unused-vars': [2, { 'args': 'none' }],
+        // 'no-unused-vars': [2, { 'args': 'none' }],
+        'no-unused-vars': 'off',
         'comma-dangle': ['error'],
         'key-spacing': [2, {
           'singleLine': {

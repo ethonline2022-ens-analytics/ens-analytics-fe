@@ -11,14 +11,13 @@ export const useLocalStorageWallet = () => {
     if (wallet?.provider) {
       dispatch.auth.setWallet(wallet)
       dispatch.auth.setProvider(new ethers.providers.Web3Provider(wallet.provider, 'any'))
+    } else {
+      dispatch.auth.onDisconnect()
     }
-  }, [ wallet ])
-
-  useEffect(() => {
     if (!connectedWallets.length) return
     const connectedWalletsLabelArray = connectedWallets.map(({ label }) => label)
     window.localStorage.setItem('connectedWallets', JSON.stringify(connectedWalletsLabelArray))
-  }, [ connectedWallets, wallet ])
+  }, [ wallet, connectedWallets ])
 
   useEffect(() => {
     async function setWalletFromLocalStorage() {

@@ -21,17 +21,17 @@ export const auth = {
   } as Auth,
   //
   reducers: {
-    setError(state: any, payload: any) {
+    setError(state: Auth, payload: string) {
       return {
         ...state, error: payload
       }
     },
-    setWallet(state: any, payload: any) {
+    setWallet(state: Auth, payload: WalletState[] | WalletState | any) {
       return {
-        ...state, wallet: payload
+        ...state, wallet: Array.isArray(payload) ? payload[ 0 ] : payload
       }
     },
-    setProvider(state: any, payload: { getSigner: () => ethers.Signer | ethers.providers.Provider | undefined }) {
+    setProvider(state: Auth, payload: { getSigner: () => ethers.Signer | ethers.providers.Provider | undefined }|any) {
       const contract = payload ? new ethers.Contract(
         CONFIG.CONTRACT.ADDRESS,
         CONFIG.CONTRACT.ABI,
@@ -39,6 +39,11 @@ export const auth = {
       ) : undefined
       return {
         ...state, provider: payload, contract: contract
+      }
+    },
+    onDisconnect(state: Auth) {
+      return {
+        ...state, provider: undefined, contract: undefined, wallet: undefined
       }
     }
   },
@@ -48,8 +53,8 @@ export const auth = {
       try {
         const connectedWallet = await onboard.connectWallet()
         dispatch.auth.setWallet(connectedWallet)
-      } catch (error) {
-        dispatch.auth.setError(error)
+      } catch (error:unknown) {
+        dispatch.auth.setError((error as string).toString())
       }
     }
   })
