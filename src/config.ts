@@ -2,7 +2,10 @@ import ensContractAbi from './assets/ensContractABI.json'
 
 export const CONFIG = {
   API_BASE_URL: '',
-  CONTRACT    : {
+  STATIC_DUMP : {
+    RAW_OWNERSHIP: '/ens-analytics-fe/ens-analytics-fe/ensRawOwnershipDump.json'
+  },
+  CONTRACT: {
     ADDRESS: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e ',
     ABI    : ensContractAbi
   },
