@@ -27,7 +27,7 @@ function IndexPage() {
       <div className='rounded-xl border border-gray-100 bg-gray-500/20 bg-clip-padding p-4 backdrop-blur-md'>
         <div className='flex flex-col items-center'>
           <div className='text-8xl'>{dayjs(currentTime).format('hh:mm')}</div>
-          {auth?.wallet?.accounts?.[ 0 ]?.address ? <div className='py-8 text-4xl'><>{getGreeting(currentTime)}, {auth?.wallet?.accounts?.[ 0 ]?.ens || truncateAddress(auth?.wallet?.accounts?.[ 0 ]?.address)}</></div>
+          {auth?.wallet?.accounts?.[ 0 ]?.address ? <div className='py-8 text-center text-4xl'><span className='text-center'>{getGreeting(currentTime)}, {auth?.wallet?.accounts?.[ 0 ]?.ens?.name || truncateAddress(auth?.wallet?.accounts?.[ 0 ]?.address)}</span></div>
             :<button className='btn btn-primary my-8' onClick={onConnect} disabled={!!auth?.wallet?.accounts?.[ 0 ]?.address}>
               {truncateAddress(auth?.wallet?.accounts?.[ 0 ]?.address) || 'Connect My Wallet'}
             </button>}
